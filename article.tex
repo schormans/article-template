@@ -1,0 +1,75 @@
+%Basic article template; should cover most bases
+%This will need LuaLaTeX to compile if using pdfLaTeX, swap out the fontspec and setfont declarations for the pdfLaTeX style \usepackage{<your font package here>}
+
+\documentclass[12pt,a4,twoside]{article}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+%Preferred font setup; Plex Mono needs shrinking as it's oversized IMO.
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+\setmathfont{Libertinus Math}
+\setmonofont[Scale=0.8]{IBM Plex Mono Light}
+
+%Typesetting fiddling
+\usepackage{microtype}
+\usepackage{selnolig}
+\nolig{Th}{T|h} % suppress "Th" ligature globally
+
+\usepackage[para,bottom]{footmisc}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{subcaption}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{xcolor}
+%use this for block quote shading
+\colorlet{shadecolor}{gray!15}
+\usepackage{graphicx}
+\usepackage[margin=1.5in]{geometry}
+
+%\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\def\tabularxcolumn#1{m{#1}} %Defines centered vertical alignment, requires array
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{D}[1]{>{\centering\arraybackslash}m{#1}}
+
+\newcommand{\myquote}[1]{
+\begin{shaded*}
+\blockquote{{#1}}
+\end{shaded*}
+}
+
+%alternate codesnip; can use this to modify the margin the grey box surrounds the text with
+%\newcommand{\codesnip}[1]{
+%{\setlength{\fboxsep}{3pt}\colorbox{gray!15}{\texttt{{#1}}}}
+%}
+
+\newcommand{\codesnip}[1]{
+{\colorbox{gray!15}{\texttt{{#1}}}}
+}
+
+\newcommand{\emphb}[1]{
+\textit{\textbf{{#1}}}
+}
+
+\SetBlockThreshold{0}
+
+\usepackage{fancyvrb}
+
+\title{Title}
+\author{Author}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{First Section Heading}
+
+Your article goes here...
+
+\end{document}
